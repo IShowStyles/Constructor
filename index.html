@@ -11,13 +11,13 @@
 <div class="container">
     <form action="/" id="create-post" class="create-post">
         <div class="image-wrap">
-            <input type="file" id="load-image" required>
+            <input type="file" id="load-image" accept="image/*" required>
             <img id="post-image" src="#" alt="Post image">
         </div>
         <div class="description-input">
-            <input id="post-title" type="text" class="title" placeholder="Заголовок" maxlength="20" required>
+            <textarea id="post-title" type="text" class="title Req" placeholder="Заголовок" maxlength="20" required></textarea>
             <input id="post-url" type="text" class="url" placeholder="Посилання" required>
-            <input name="post-text" id="post-text" maxlength="250" class="text" placeholder="Текст" required>
+            <textarea name="post-text" id="post-text" maxlength="250" class="text Req" placeholder="Текст" required></textarea>
             <input class="submit" type="submit" value="Создать">
         </div>
     </form>

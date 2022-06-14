@@ -67,6 +67,11 @@ body {
     background-color: blanchedalmond;
 }
 
+textarea{
+    resize: none;
+    margin-bottom: 22px;
+}
+
 .preloader {
     display: none;
     position: fixed;
@@ -90,6 +95,10 @@ body {
     color: #fff;
     border-radius: 7px;
     cursor: pointer;
+}
+
+#post-url{
+    margin-bottom: 12px;
 }
 
 #create-post {
@@ -138,8 +147,17 @@ body {
 
 .posts-inner {
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     flex-wrap: wrap;
+}
+
+.posts-inner > div{
+
+    margin-bottom: 45px;
+}
+
+.posts-inner > div:not(:nth-child(3n)){
+    margin-right: 65px;
 }
 
 #load-more {

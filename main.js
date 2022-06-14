@@ -13,94 +13,106 @@ const loadMoreBtn = document.getElementById('load-more');
 
 //block`s()
 let countVisiblePosts = 11;
-const posts = [
-    {
-        "image": "/images/avatar-1.jpg",
-        "title": "Marco em Polo",
-        "text": "Student Lorem ipsum dolor sit amet.",
-        "url": "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal"
-    },
-    {
-        "image": "/images/avatar-2.jpg",
-        "title": "Alberto De Manelo",
-        "text": "Senior Fullstek dev",
-        "url": "https://parceljs.org/features/development/"
-    },
-    {
-        "image": "/images/avatar-3.jpg",
-        "title": "Emet la Lorem",
-        "text": "Airplane Pilot",
-        "url": "https://ru.wikipedia.org/wiki/Boeing"
-    },
-    {
-        "image": "/images/avatar-5.jpg",
-        "title": "Tomara Wane",
-        "text": "nurse",
-        "url": "https://index.minfin.com.ua/reference/coronavirus/geography/"
-    },
-    {
-        "image": "/images/avatar-4.jpg",
-        "title": "Lora Bethovenchini",
-        "text": "musician",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-6.jpg",
-        "title": "Test(enter name)",
-        "text": "teacher",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-7.jpg",
-        "title": "Test(enter name)",
-        "text": "Music Producer",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-8.jpg",
-        "title": "Test(enter name)",
-        "text": "Finance Manager",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-9.jpg",
-        "title": "Test(enter name)",
-        "text": "Student Lorem ipsum dolor sit amet.",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-10.jpg",
-        "title": "Test(enter name)",
-        "text": "Shop-assistant",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-11.jpg",
-        "title": "Test(enter name)",
-        "text": "Professional Sportsman",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-12.jpg",
-        "title": "Test(enter name)",
-        "text": "Finance Manager",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    },
-    {
-        "image": "/images/avatar-14.jpg",
-        "title": "Alex",
-        "text": "Junior Frond-end Developer",
-        "url": "https://t.me/zholudev111"
-    },
-    {
-        "image": "/images/avatar-13.jpg",
-        "title": "Alex",
-        "text": "Junior Sandwich Developer",
-        "url": "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
-    }
+const postsCol = [
+
+    [
+        "/images/avatar-1.jpg",
+        "Marco em Polo",
+        "Student Lorem ipsum dolor sit amet.",
+        "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal"
+    ],
 
 
+    ["/images/avatar-2.jpg",
+        "Alberto De Manelo",
+        "Senior Fullstek dev",
+        "https://parceljs.org/features/development/"
+    ],
+
+
+    [
+        "/images/avatar-3.jpg",
+        "Emet la Lorem",
+        "Airplane Pilot",
+        "https://ru.wikipedia.org/wiki/Boeing"
+    ],
+
+    [
+        "/images/avatar-5.jpg",
+        "Tomara Wane",
+        "nurse",
+        "https://index.minfin.com.ua/reference/coronavirus/geography/"
+    ],
+    [
+        "/images/avatar-4.jpg",
+        "Lora Bethovenchini",
+        "musician",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+    [
+        "/images/avatar-6.jpg",
+        "Test(enter name)",
+        "teacher",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+    [
+
+        "/images/avatar-7.jpg",
+        "Test(enter name)",
+        "Music Producer",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+
+    ],
+    [
+
+        "/images/avatar-8.jpg",
+        "Test(enter name)",
+        "Finance Manager",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+
+    ],
+
+    [
+        "/images/avatar-9.jpg",
+        "Test(enter name)",
+        "Student Lorem ipsum dolor sit amet.",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+
+    [
+        "/images/avatar-10.jpg",
+        "Test(enter name)",
+        "Shop-assistant",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+
+    [
+        "/images/avatar-11.jpg",
+        "Test(enter name)",
+        "Professional Sportsman",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+
+    [   "/images/avatar-12.jpg",
+        "Test(enter name)",
+        "Finance Manager",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
+
+    [   "/images/avatar-14.jpg",
+        "Alex",
+        "Junior Frond-end Developer",
+        "https://t.me/zholudev111"
+    ],
+
+    [   "/images/avatar-13.jpg",
+        "Alex",
+        "Junior Sandwich Developer",
+        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/"
+    ],
 ];
+
+
 
 function isFileImage(file) {
     return file && file['type'].split('/')[0] === 'image';
@@ -111,7 +123,25 @@ const regexps = {
 }
 
 
-const createPost = (postURL, imageURL, title, text) => {
+const createPost = (arrTmp) => {
+
+    let postURL = '';
+    let imageURL = '';
+    let title = '';
+    let text = '';
+
+    for (let i = 0; i < arrTmp.length - 1; i++) {
+        postURL = arrTmp[3]
+        imageURL = arrTmp[0]
+        title = arrTmp[1]
+        text = arrTmp[2]
+    }
+
+    console.log(postURL)
+    console.log(imageURL)
+    console.log(title)
+    console.log(text)
+
     return `
     <div class="post">
       <a href="${postURL}" class="post-wrapper">
@@ -124,72 +154,127 @@ const createPost = (postURL, imageURL, title, text) => {
 }
 
 
-const addPost = () => {
-    const newPost = {
-        image: image.src,
-        title: title.value,
-        text: text.value,
-        url: url.value
-    }
-    posts.push(newPost);
+ const addPost = () => {
+
+     let newPost = []
+
+
+    let imgTmp = image.src;
+    let titleTmp = title.value;
+    let textTmp = text.value;
+    let urlTmp = url.value;
+
+     newPost.push(imgTmp)
+     newPost.push(titleTmp)
+     newPost.push(textTmp)
+     newPost.push(urlTmp)
+
+
+
+
+
+
+    console.log(newPost,"new post")
+
+    postsCol.push(newPost);
+
     form.reset();
     image.style.display = 'none';
 }
 
 
 
+
 const renderPosts = () => {
+
+
+
+
     preloader.style.display = 'block';
 
     listPosts.innerHTML = '';
-    if (countVisiblePosts > posts.length) {
-        countVisiblePosts = posts.length;
+
+    if (countVisiblePosts > postsCol.length) {
+        countVisiblePosts = postsCol.length;
         loadMoreBtn.style.display = 'none';
     }
+
     if (loadMoreBtn.style.display === 'none') {
-        countVisiblePosts = posts.length;
+        countVisiblePosts = postsCol.length;
     }
-    for (let i = 0; i < countVisiblePosts; i++) {
-        const {image, title, text, url} = posts[i];
-        listPosts.innerHTML += createPost(url, image, title, text);
+
+
+
+    if(countVisiblePosts === 11){
+        for (let i = 0; i < countVisiblePosts; i++) {
+            const item = postsCol[i]
+            listPosts.innerHTML += createPost(item);
+        }
+    }else{
+
+        for (let i = 0; i < countVisiblePosts; i++) {
+            const item = postsCol[i]
+            listPosts.innerHTML += createPost(item);
+        }
+
     }
+
+
+    console.log(postsCol.length)
 
     const lastImageInList = listPosts.children[listPosts.childElementCount - 1].children[0].children[0];
     lastImageInList.onload = () => {
         preloader.style.display = 'none';
     }
+
+    console.log(postsCol.length)
+    console.log(postsCol)
 }
 
-const  textFields = ()=>{
+const textFields = () => {
 
     let max_chars = 250;
 
-    if(text.value.length > max_chars) {
+    if (text.value.length > max_chars) {
         this.value = this.value.substring(0, max_chars);
     }
 
 }
 
-const titleFields = (title) =>{
+const titleFields = (title) => {
 
-    title.oninput = (title)=>{
-        title.value = title.value.substring(0,20);
+    title.oninput = (title) => {
+        title.value = title.value.substring(0, 20);
     }
 }
 
 const validateFields = () => {
     if (!isFileImage(loadImageInput.files[0])) {
-        message.textContent = 'Файл должен быть картинкой!';
+        message.innerHTML += `<p>Файл должен быть картинкой!</p><br/>`;
         return false;
     }
+
+    if (text.value.length === 0) {
+        message.innerHTML += `<p>Пожалуйста, введите Ваше имя!</p><br/>`;
+        return false
+    }
+
+    if (title.value.length === 0) {
+        message.innerHTML += `<p>Пожалуйста, введите Свою Профессию!</p><br/>`
+        return false
+    }
+
     if (!regexps.cyrillic.test(title.value)) {
-        message.textContent = '\nЗаголовок должен иметь только кириллические символы!';
+        message.innerHTML += `<p>Заголовок должен иметь только кириллические символы!</p><br/>`;
         return false;
     }
+
     if (!regexps.cyrillic.test(text.value)) {
-        message.textContent = '\nТекст должен иметь только кириллические символы!';
+        message.innerHTML += `<p>Текст должен иметь только кириллические символы!</p><br/>`;
         return false;
     }
+
+
 
 
 
@@ -198,7 +283,6 @@ const validateFields = () => {
 
     return true;
 }
-
 
 
 loadImageInput.onchange = () => {
@@ -213,6 +297,7 @@ loadImageInput.onchange = () => {
 loadMoreBtn.onclick = () => {
     countVisiblePosts += 10;
     renderPosts();
+    console.log(postsCol.length)
 }
 
 window.onload = () => {
@@ -227,12 +312,3 @@ form.onsubmit = e => {
 }
 
 
-const textLength = document.querySelector('#value');
-
-text.oninput = () =>{
-
-   let symbols =  0;
-   symbols++;
-   console.log(symbols)
-
-}
