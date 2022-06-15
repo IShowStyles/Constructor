@@ -73,7 +73,6 @@ textarea{
 }
 
 .preloader {
-    display: none;
     position: fixed;
     left: 0;
     right: 0;
@@ -101,7 +100,13 @@ textarea{
     margin-bottom: 12px;
 }
 
+#load-image{
+    margin-bottom: 15px;
+}
+
 #create-post {
+    display: flex;
+    justify-content: center;
     background-color: #c0c0c0;
     padding: 12px 24px;
     display: flex;
@@ -112,8 +117,8 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
-    max-width: 400px;
+    height: 300px;
+    width: 300px;
 }
 
 .image-wrap img {
@@ -127,6 +132,7 @@ textarea{
 .description-input {
     display: flex;
     flex-direction: column;
+    margin-right: 45px;
 }
 
 .post {
@@ -174,5 +180,14 @@ textarea{
 .wrapper-btn {
     display: flex;
     justify-content: center;
+}
 
+
+
+#post-image{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
