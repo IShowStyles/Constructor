@@ -9,106 +9,12 @@ const message = document.getElementById("error");
 const loadMoreBtn = document.getElementById("load-more");
 
 
-let countVisiblePosts = 10;
-const postsCol = [
-    [
-        "/images/avatar-1.jpg",
-        "Marco em Polo",
-        "Student Lorem ipsum dolor sit amet.",
-        "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal",
-    ],
+let countVisiblePosts = 0;
+const postsCol = [];
 
-    [
-        "/images/avatar-2.jpg",
-        "Alberto De Manelo",
-        "Senior Fullstek dev",
-        "https://parceljs.org/features/development/",
-    ],
+console.log(postsCol, "posts")
+console.log(countVisiblePosts, 'visible')
 
-    [
-        "/images/avatar-3.jpg",
-        "Emet la Lorem",
-        "Airplane Pilot",
-        "https://ru.wikipedia.org/wiki/Boeing",
-    ],
-
-    [
-        "/images/avatar-5.jpg",
-        "Tomara Wane",
-        "nurse",
-        "https://index.minfin.com.ua/reference/coronavirus/geography/",
-    ],
-
-    [
-        "/images/avatar-4.jpg",
-        "Lora Bethovenchini",
-        "musician",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-6.jpg",
-        "Test(enter name)",
-        "teacher",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-7.jpg",
-        "Test(enter name)",
-        "Music Producer",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-8.jpg",
-        "Test(enter name)",
-        "Finance Manager",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-9.jpg",
-        "Test(enter name)",
-        "Student Lorem ipsum dolor sit amet.",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-10.jpg",
-        "Test(enter name)",
-        "Shop-assistant",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-11.jpg",
-        "Test(enter name)",
-        "Professional Sportsman",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-12.jpg",
-        "Test(enter name)",
-        "Finance Manager",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-14.jpg",
-        "Alex",
-        "Junior Frond-end Developer",
-        "https://t.me/zholudev111",
-    ],
-
-    [
-        "/images/avatar-13.jpg",
-        "Alex",
-        "Junior Sandwich Developer",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-];
 
 function isFileImage(file) {
     return file && file["type"].split("/")[0] === "image";
@@ -137,19 +43,95 @@ const addPost = () => {
     form.reset();
     image.src = "";
     countVisiblePosts++
+    console.log(postsCol.length)
     image.style.display = "none";
 };
+
+
 
 const renderPosts = () => {
     const preloader = document.getElementById("preloader");
 
     listPosts.innerHTML = "";
 
+    // if (countVisiblePosts > postsCol.length ) {
+    //     countVisiblePosts = postsCol.length;
+    //     loadMoreBtn.style.display = "none";
+    // }
 
-    if (countVisiblePosts > postsCol.length) {
-        countVisiblePosts = postsCol.length;
+    // if(postsCol.length % 10 === 1 && postsCol.length > 11 || postsCol.length === 10   ) {
+    //     loadMoreBtn.style.display = "block";
+    // }
+    // else if (postsCol.length > 9 && postsCol.length % 10 !== 1  ){ //postsCol.length > 11
+    //         loadMoreBtn.style.display = "none";
+    //     console.log('true')
+    // }
+
+
+
+    // if(postsCol.length > 9){
+    //     if(postsCol.length % 10 === 1 && postsCol.length > 11 || postsCol.length === 10   ) {
+    //         loadMoreBtn.style.display = "block";
+    //     }
+    //
+    // }else if(postsCol.length < 10){
+    //     if (postsCol.length < 9 && postsCol.length % 10 !== 1  ){
+    //         loadMoreBtn.style.display = "none";
+    //         console.log('true')
+    //     }
+    // }
+
+    //   if(postsCol.length <= 10){
+    //             if (postsCol.length < 9 ){
+    //                 loadMoreBtn.style.display = "none";
+    //                 console.log('true')
+    //             }
+    //             if (countVisiblePosts === 10 ){
+    //                 loadMoreBtn.style.display = "block";
+    //             }
+    //             if(!loadMoreBtn.onclick){
+    //                 countVisiblePosts = 10;
+    //             }
+    //     }else if(postsCol.length > 10 ){
+    //             if(postsCol.length % 10 === 1 && postsCol.length > 11 || postsCol.length === 10   ) {
+    //                 loadMoreBtn.style.display = "block";
+    //             }
+    //             if(!loadMoreBtn.onclick){
+    //                 countVisiblePosts == postsCol.length;
+    //             }
+    //     }
+
+    if( postsCol.length < 9){
         loadMoreBtn.style.display = "none";
+            if (postsCol.length === 10 ){
+                loadMoreBtn.style.display = "block";
+            }
+            if(!loadMoreBtn.onclick){
+                countVisiblePosts = 10;
+            }
+    }else if(postsCol.length > 9 ){
+            countVisiblePosts = postsCol.length
+            if(postsCol.length % 10 === 1 && postsCol.length > 11 || postsCol.length === 10   ) {
+                loadMoreBtn.style.display = "block";
+            }
+            if(  countVisiblePosts === 10 && loadMoreBtn.onclick !== onclick){
+                postsCol.length = 10
+                let count = 0
+
+                for (let i = 0; i <postsCol.length ; i++) {
+                    const elem = postsCol[i]
+                    listPosts.innerHTML +=createPost(elem);
+                    count ++
+                }
+                if(count === 10 ){
+                    alert('message 1')
+                    return;
+                }
+            }
     }
+
+    console.log(countVisiblePosts,'count')
+
 
     const arrToShow = postsCol.slice(0, countVisiblePosts);
 
@@ -158,7 +140,9 @@ const renderPosts = () => {
     }
 
     preloader.style.display = "none";
+
 };
+
 
 const textFields = (str) => {
     let max_chars = 250;

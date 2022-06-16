@@ -167,10 +167,12 @@ textarea{
 }
 
 #load-more {
+    display: none;
     margin: 0 auto;
     padding: 10px;
     border: 2px solid black;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .posts{
@@ -180,6 +182,7 @@ textarea{
 .wrapper-btn {
     display: flex;
     justify-content: center;
+    padding-bottom: 22px;
 }
 
 
