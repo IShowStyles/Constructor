@@ -4,91 +4,13 @@ const title = document.getElementById("post-title");
 const text = document.getElementById("post-text");
 const url = document.getElementById("post-url");
 const loadImageInput = document.getElementById("load-image");
-const preloader = document.getElementById("preloader");
 const form = document.getElementById("create-post");
-const listPosts = document.querySelector(".posts-inner");
 const message = document.getElementById("error");
 const loadMoreBtn = document.getElementById("load-more");
 
-console.log(listPosts)
-
-//block`s()
-let countVisiblePosts = 10;
-let addedPosts = 10;
-const postsCol = [
-    [
-        "/images/avatar-1.jpg",
-        "Marco em Polo",
-        "Student Lorem ipsum dolor sit amet.",
-        "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal",
-    ],
-
-    [
-        "/images/avatar-2.jpg",
-        "Alberto De Manelo",
-        "Senior Fullstek dev",
-        "https://parceljs.org/features/development/",
-    ],
-
-    [
-        "/images/avatar-3.jpg",
-        "Emet la Lorem",
-        "Airplane Pilot",
-        "https://ru.wikipedia.org/wiki/Boeing",
-    ],
-
-    [
-        "/images/avatar-5.jpg",
-        "Tomara Wane",
-        "nurse",
-        "https://index.minfin.com.ua/reference/coronavirus/geography/",
-    ],
-
-    [
-        "/images/avatar-4.jpg",
-        "Lora Bethovenchini",
-        "musician",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-6.jpg",
-        "Test(enter name)",
-        "teacher",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-7.jpg",
-        "Test(enter name)",
-        "Music Producer",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-8.jpg",
-        "Test(enter name)",
-        "Finance Manager",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-9.jpg",
-        "Test(enter name)",
-        "Student Lorem ipsum dolor sit amet.",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-    [
-        "/images/avatar-10.jpg",
-        "Test(enter name)",
-        "Shop-assistant",
-        "https://www.olx.ua/d/hobbi-otdyh-i-sport/muzykalnye-instrumenty/q-%D0%B0%D0%BA%D0%BA%D0%BE%D1%80%D0%B4%D0%B5%D0%BE%D0%BD/",
-    ],
-
-];
-
-console.log(postsCol.length, 'length of array')
+let countVisiblePosts = 0;
+let addedPosts = 0;
+const postsCol = [];
 
 function isFileImage(file) {
     return file && file["type"].split("/")[0] === "image";
@@ -120,9 +42,12 @@ const addPost = () => {
 };
 
 const renderPosts = () => {
-    listPosts.innerHTML = "";
+    const preloader = document.getElementById("preloader");
+    const listPosts = document.querySelector(".posts-inner");
 
-    console.log(postsCol)
+    preloader.style.display = "block";
+
+    listPosts.innerHTML = "";
 
     if (countVisiblePosts > postsCol.length) {
         countVisiblePosts = postsCol.length;
@@ -138,19 +63,14 @@ const renderPosts = () => {
     }
     else if (postsCol.length > 10 && loadMoreBtn.onclick !== onclick) {
             listPosts.length = 10;
-            // if(postsCol.length < 20 ){
-            //     addedPosts++
-            // }
-        // addedPosts = countVisiblePosts;
+
 
         if (postsCol.length % 10 === 1) {
             loadMoreBtn.style.display = "block";
-            console.log(222)
-            console.log(listPosts.length % 10 !== 1,'? true')
-            console.log(listPosts.length)
+
         }  if(postsCol.length === addedPosts)  {
             loadMoreBtn.style.display = "none";
-            console.log(111)
+
         }
 
     }
@@ -162,7 +82,13 @@ const renderPosts = () => {
             listPosts.innerHTML += createPost(item);
         }
 
+    if(postsCol.length > 0){
+        let lastImageInList = listPosts.children[listPosts.childElementCount-1].children[0].children[0]
+        lastImageInList.onload = () => preloader.style.display = "none";
+    }else {
         preloader.style.display = "none";
+    }
+
     };
 
     const textFields = (str) => {
@@ -247,19 +173,14 @@ const renderPosts = () => {
     loadMoreBtn.onclick = () => {
 
 
-        if(postsCol.length > 11 && addedPosts < countVisiblePosts ){
+        if(postsCol.length >= 11 && addedPosts < countVisiblePosts ){
             addedPosts = countVisiblePosts;
             if(!addedPosts % 10 === 1 ){
                 let tmp = addedPosts; // 6
-                console.log(tmp)
                 addedPosts += 10 - tmp;
-            }// else if() {
-            //
-            //
-            // }
+            }
         }
-        console.log(countVisiblePosts,'plus + 10')
-        console.log(addedPosts,'added on click')
+
         renderPosts();
     };
 
@@ -272,7 +193,6 @@ const renderPosts = () => {
         if (!validateFields()) return;
         addPost();
         countVisiblePosts++
-        console.log(countVisiblePosts, 'countVisible')
         renderPosts();
         message.innerHTML = "";
     };
