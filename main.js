@@ -1,4 +1,5 @@
 // id`s
+const listPosts = document.querySelector(".posts-inner");
 const image = document.getElementById("post-image");
 const title = document.getElementById("post-title");
 const text = document.getElementById("post-text");
@@ -7,8 +8,10 @@ const loadImageInput = document.getElementById("load-image");
 const form = document.getElementById("create-post");
 const message = document.getElementById("error");
 const loadMoreBtn = document.getElementById("load-more");
+const preloader = document.getElementById("preloader");
 
-let countVisiblePosts = 0;
+
+let countVisiblePosts = 10;
 let addedPosts = 0;
 const postsCol = [];
 
@@ -41,52 +44,58 @@ const addPost = () => {
     image.style.display = "none";
 };
 
-const renderPosts = () => {
-    const preloader = document.getElementById("preloader");
-    const listPosts = document.querySelector(".posts-inner");
-
-    preloader.style.display = "block";
-
+const renderPostCol = () => {
     listPosts.innerHTML = "";
 
-    if (countVisiblePosts > postsCol.length) {
-        countVisiblePosts = postsCol.length;
-        loadMoreBtn.style.display = "none";
+    const arrToShow = postsCol.slice(0, addedPosts);
+
+    for (const item of arrToShow) {
+        listPosts.innerHTML += createPost(item);
     }
 
+    if(addedPosts > 10 && addedPosts < postsCol.length && loadMoreBtn.style.display === "none" ){
+        addedPosts++
 
-    if (postsCol.length < 11) {
-        loadMoreBtn.style.display = "none";
-        addedPosts = countVisiblePosts
-        listPosts.length = 10;
-
-    }
-    else if (postsCol.length > 10 && loadMoreBtn.onclick !== onclick) {
-            listPosts.length = 10;
-
-
-        if (postsCol.length % 10 === 1) {
-            loadMoreBtn.style.display = "block";
-
-        }  if(postsCol.length === addedPosts)  {
-            loadMoreBtn.style.display = "none";
-
-        }
+        const postHTML = createPost(postsCol[postsCol.length - 1])
+        listPosts.children[listPosts.childElementCount-1].insertAdjacentHTML("afterend", (postHTML));
 
     }
-
-
-        const arrToShow = postsCol.slice(0, addedPosts);
-
-        for (const item of arrToShow) {
-            listPosts.innerHTML += createPost(item);
-        }
 
     if(postsCol.length > 0){
         let lastImageInList = listPosts.children[listPosts.childElementCount-1].children[0].children[0]
         lastImageInList.onload = () => preloader.style.display = "none";
     }else {
         preloader.style.display = "none";
+    }
+}
+
+const renderPosts = () => {
+
+    preloader.style.display = "block";
+
+    if (countVisiblePosts > postsCol.length) {
+        countVisiblePosts = postsCol.length;
+        loadMoreBtn.style.display = "none";
+    }
+
+    if (postsCol.length < 11) {
+        loadMoreBtn.style.display = "none";
+        addedPosts = countVisiblePosts
+        listPosts.length = 10;
+    }
+    else if (postsCol.length > 10 && loadMoreBtn.onclick !== onclick) {
+            listPosts.length = 10;
+
+        if (postsCol.length % 10 === 1) {
+            loadMoreBtn.style.display = "block";
+
+        }  if(postsCol.length === addedPosts)  {
+            loadMoreBtn.style.display = "none";
+        }
+    }
+
+     if(loadMoreBtn.onclick !== onclick && addedPosts % 10 < 10){
+        renderPostCol();
     }
 
     };
@@ -173,12 +182,8 @@ const renderPosts = () => {
     loadMoreBtn.onclick = () => {
 
 
-        if(postsCol.length >= 11 && addedPosts < countVisiblePosts ){
+        if(postsCol.length >= 10 && addedPosts < countVisiblePosts ){
             addedPosts = countVisiblePosts;
-            if(!addedPosts % 10 === 1 ){
-                let tmp = addedPosts; // 6
-                addedPosts += 10 - tmp;
-            }
         }
 
         renderPosts();
@@ -194,5 +199,8 @@ const renderPosts = () => {
         addPost();
         countVisiblePosts++
         renderPosts();
+        console.log(addedPosts,'added posts')
+        console.log(countVisiblePosts,'count posts')
+        console.log(postsCol.length,'arr posts')
         message.innerHTML = "";
     };
